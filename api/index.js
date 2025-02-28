@@ -4,6 +4,7 @@ const express = require("express");
 const app = express();
 app.use(express.json());
 app.use(cors());
+app.get("/", (req, res) => res.send("Express!!"));
 
 app.post("/send-email", async (req, res) => {
   const { mailtext, from } = req.body;
@@ -37,4 +38,4 @@ app.post("/send-email", async (req, res) => {
   }
 });
 
-app.listen(3001, () => console.log("Server running on port 3001"));
+app.listen(3000, () => console.log("Server running on port 3000"));
