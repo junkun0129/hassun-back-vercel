@@ -1,3 +1,4 @@
+require("dotenv").config();
 const nodemailer = require("nodemailer");
 const cors = require("cors");
 const express = require("express");
@@ -8,6 +9,11 @@ app.get("/", (req, res) => res.send("Express!!"));
 
 app.post("/send-email", async (req, res) => {
   const { mailtext, from } = req.body;
+  
+  if (!process.env.EMAIL || !process.env.APP_PASSWORD) {
+    console.error("Missing Environment Variables");
+    return res.status(500).send("Server Configuration Error");
+  }
 
   const transporter = nodemailer.createTransport({
     service: "gmail",
