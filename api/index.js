@@ -14,7 +14,8 @@ app.post("/send-email", async (req, res) => {
     console.error("Missing Environment Variables");
     return res.status(500).send("Server Configuration Error");
   }
-
+console.log('App Password Loaded:', process.env.APP_PASSWORD ? 'Yes' : 'No');
+console.log('App mail Loaded:', process.env.EMAIL ? 'Yes' : 'No');
   const transporter = nodemailer.createTransport({
     service: "gmail",
     auth: {
