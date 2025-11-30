@@ -41,6 +41,7 @@ console.log('App mail Loaded:', process.env.EMAIL ? 'Yes' : 'No');
 
     return res.status(200).send("Email sent successfully");
   } catch (error) {
+    console.error("Error sending email:", error)
     return res.status(500).send("Failed to send email");
   }
 });
